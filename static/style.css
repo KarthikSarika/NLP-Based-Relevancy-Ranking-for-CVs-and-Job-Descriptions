@@ -1,0 +1,237 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #eef2f7;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+header {
+    background-color: #4a90e2;
+    color: white;
+    padding: 25px 30px;
+    text-align: center;
+    border-bottom: 1px solid #3a7bd5;
+}
+
+header h1 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 2.2em;
+}
+
+main {
+    padding: 30px;
+}
+
+h2, h3 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.card {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 25px;
+    border: 1px solid #e0e6ed;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+textarea,
+input[type="file"],
+select {
+    width: calc(100% - 24px);
+    padding: 12px;
+    border: 1px solid #cdd4da;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+textarea:focus,
+input[type="file"]:focus,
+select:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+    outline: none;
+}
+
+input[type="file"] {
+    padding: 10px;
+}
+
+.submit-button {
+    background-color: #4a90e2;
+    color: white;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.submit-button:hover {
+    background-color: #3a7bd5;
+    transform: translateY(-2px);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+}
+
+.error-message {
+    color: #e74c3c;
+    background-color: #fdeded;
+    border: 1px solid #e74c3c;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.results-section {
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 25px;
+}
+
+.job-description-display {
+    background-color: #f8fbfd;
+    border: 1px solid #e0e6ed;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+.relevancy-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.relevancy-list li {
+    padding: 10px 0;
+    border-bottom: 1px dashed #e0e6ed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.05em;
+}
+
+.relevancy-list li:last-child {
+    border-bottom: none;
+}
+
+.relevancy-list li strong {
+    color: #2c3e50;
+}
+
+.score {
+    font-weight: 700;
+    color: #4a90e2;
+    font-size: 1.1em;
+}
+
+.overall-score {
+    font-weight: 700;
+    color: #27ae60;
+    font-size: 1.3em;
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #e8f5e9;
+    border-radius: 8px;
+    border: 1px solid #d4edda;
+}
+
+.skills-badges {
+    margin-top: 20px;
+}
+
+.badge {
+    background-color: #dbeafe;
+    color: #1e3a8a;
+    padding: 8px 14px;
+    margin: 5px 5px 5px 0;
+    border-radius: 20px;
+    display: inline-block;
+    font-size: 0.95em;
+    font-weight: 500;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    color: #777;
+    font-size: 0.9em;
+    border-top: 1px solid #e0e6ed;
+    background-color: #f8fbfd;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    .container {
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    main {
+        padding: 20px 15px;
+    }
+
+    .card {
+        padding: 20px;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        border-bottom: 1px solid #e0e6ed;
+    }
+
+    .card:last-of-type {
+        border-bottom: none;
+    }
+}

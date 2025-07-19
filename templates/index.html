@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Relevancy Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CV Relevancy Checker</h1>
+        </header>
+
+        <main>
+            <section class="form-section card">
+                <h2>Upload Your Resume & Job Description</h2>
+
+                {% if error %}
+                <p class="error-message">{{ error }}</p>
+                {% endif %}
+
+                <form method="POST" enctype="multipart/form-data" class="relevancy-form">
+                    <div class="form-group">
+                        <label for="job_input_option">Select Job Input Type:</label>
+                        <select id="job_input_option" name="job_input_option" onchange="toggleJobInput()">
+                            <option value="text" selected>Paste Job Description</option>
+                            <option value="pdf">Upload Job Description (PDF)</option>
+                        </select>
+                    </div>
+
+                    <div id="job_description_text" class="form-group">
+                        <label for="job_description">Job Description:</label>
+                        <textarea id="job_description" name="job_description" rows="8" placeholder="Paste the job description here..."></textarea>
+                    </div>
+
+                    <div id="job_description_pdf" class="form-group" style="display: none;">
+                        <label for="job_pdf">Upload Job Description (PDF):</label>
+                        <input type="file" id="job_pdf" name="job_pdf" accept=".pdf">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="resume">Upload Resume (PDF):</label>
+                        <input type="file" id="resume" name="resume" accept=".pdf" required>
+                    </div>
+
+                    <button type="submit" class="submit-button">Check Relevancy</button>
+                </form>
+            </section>
+
+            {% if result %}
+            <section class="results-section card">
+                <h3>Job Description:</h3>
+                <p class="job-description-display">{{ job_desc }}</p>
+
+                <h3>Relevancy Ranking:</h3>
+                <ul class="relevancy-list">
+                    {% for section, score in result %}
+                    <li><strong>{{ section.replace('_', ' ').title() }}:</strong> <span class="score">{{ "%.4f"|format(score) }}</span></li>
+                    {% endfor %}
+                </ul>
+
+                <h3>Overall Relevancy Score: <span class="overall-score">{{ "%.4f"|format(overall_score) }}</span></h3>
+
+                {% if missing_skills %}
+                <h3>🛠 Suggested Skills to Learn:</h3>
+                <div class="skills-badges">
+                    {% for skill in missing_skills %}
+                    <span class="badge">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </section>
+            {% endif %}
+        </main>
+
+        <footer>
+            <p>&copy; 2025 CV Relevancy Checker. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+    function toggleJobInput() {
+        const option = document.getElementById("job_input_option").value;
+        document.getElementById("job_description_text").style.display = option === "text" ? "block" : "none";
+        document.getElementById("job_description_pdf").style.display = option === "pdf" ? "block" : "none";
+    }
+    </script>
+</body>
+</html>
